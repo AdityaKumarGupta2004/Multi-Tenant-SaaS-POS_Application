@@ -4,6 +4,7 @@ package com.trisys.Pos.System.modal;
 // import com.firstone.pm.posapp.domain.Gender;
 // import com.firstone.pm.posapp.domain.UserRole;
 
+import com.trisys.Pos.System.domain.UserRole;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
