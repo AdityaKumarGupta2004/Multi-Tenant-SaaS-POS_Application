@@ -10,6 +10,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
 //    List<User> findByStore(Store store);
 
-    List<User> findByBranchId(Long branchId);
+//    List<User> findByBranchId(Long branchId);
 
 }

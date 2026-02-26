@@ -3,6 +3,7 @@ package com.trisys.Pos.System.service.impl;
 import com.trisys.Pos.System.configuration.JwtProvider;
 import com.trisys.Pos.System.domain.UserRole;
 import com.trisys.Pos.System.exceptions.UserException;
+import com.trisys.Pos.System.mapper.UserMapper;
 import com.trisys.Pos.System.modal.User;
 import com.trisys.Pos.System.payload.dto.UserDTO;
 import com.trisys.Pos.System.payload.response.AuthResponse;
@@ -44,7 +45,7 @@ public class AuthServiceImpl implements AuthService {
         newUser.setEmail(userDTO.getEmail());
         newUser.setPhoneNumber(userDTO.getPhoneNumber());
         newUser.setAddress(userDTO.getAddress());
-        newUser.setGender(userDTO.getGender());
+        // newUser.setGender(userDTO.getGender());
         newUser.setDateOfBirth(userDTO.getDateOfBirth());
         newUser.setRole(userDTO.getRole());
         newUser.setRegisteredAt(LocalDateTime.now());
@@ -62,9 +63,9 @@ public class AuthServiceImpl implements AuthService {
         String jwt = jwtProvider.generateToken(auth);
 
         AuthResponse authResponse = new AuthResponse();
-        authResponse.setJwt(jwt);
-        authResponse.setMessage("Registered successfully");
-        authResponse.setUser(UserMapper.toDTO(savedUser));
+         authResponse.setJwt(jwt);
+         authResponse.setMessage("Registered successfully");
+         authResponse.setUser(UserMapper.toDTO(savedUser));
 
         return authResponse;
     }
@@ -100,7 +101,7 @@ public class AuthServiceImpl implements AuthService {
         }
 
         if (!passwordEncoder.matches(password, userDetails.getPassword())) {
-            throw new UserException("Invalid password");
+            throw new UserException("Invalid credentials");
         }
 
         return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());

@@ -44,19 +44,19 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-     @ManyToOne
-     private Store store;
-
-     @ManyToOne
-     private Branch branch;
+//     @ManyToOne
+//     private Store store;
+//
+//     @ManyToOne
+//     private Branch branch;
 
      private String phoneNumber;
 
      private String address;
 
-     @Enumerated(EnumType.STRING)
-     @Column(nullable = false)
-     private Gender gender;
+//     @Enumerated(EnumType.STRING)
+//     @Column(nullable = false)
+//     private Gender gender;
 
     @NotNull
     @Past
