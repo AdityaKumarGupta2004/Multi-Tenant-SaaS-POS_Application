@@ -42,10 +42,10 @@ public class JwtProvider {
                 .verifyWith(key)
                 .build()
                 .parseSignedClaims(jwtToken)
-                .getPayload();
+                .getPayload(); 
 
         return String.valueOf(claims.get("email"));
-    }
+    } 
 
     private String populateAuthorities(Collection<? extends GrantedAuthority> authorities) {
         Set<String> authoritiesSet = new HashSet<>();

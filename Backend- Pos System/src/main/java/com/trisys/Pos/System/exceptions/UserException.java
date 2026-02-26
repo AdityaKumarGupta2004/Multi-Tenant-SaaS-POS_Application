@@ -1,0 +1,8 @@
+package com.trisys.Pos.System.exceptions;
+
+public class UserException extends Exception {
+
+    public UserException(String message) {
+        super(message);
+    }
+}
