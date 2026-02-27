@@ -20,6 +20,7 @@ public class PosSystemApplication {
             try (Connection connection = dataSource.getConnection()) {
                 System.out.println("✅ Connected to DB: " + connection.getMetaData().getURL());
                 System.out.println("✅ DB Name: " + connection.getCatalog());
+                System.out.println("The server is Started in the localhost:5000");
             }
         };
     }
