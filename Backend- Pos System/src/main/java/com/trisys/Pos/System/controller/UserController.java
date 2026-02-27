@@ -5,6 +5,7 @@ import com.trisys.Pos.System.exceptions.UserException;
 import com.trisys.Pos.System.mapper.UserMapper;
 import com.trisys.Pos.System.modal.User;
 import com.trisys.Pos.System.payload.dto.UserDTO;
+import com.trisys.Pos.System.payload.response.ApiResponse;
 import com.trisys.Pos.System.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -35,13 +36,13 @@ public class UserController {
         return ResponseEntity.ok(UserMapper.toDTO(user));
     }
 
-    // @DeleteMapping("/{id}")
-    // public ResponseEntity<ApiResponse> deleteUser(@PathVariable Long id) throws UserException {
-    //     userService.deleteUser(id);
-    //     ApiResponse apiResponse = new ApiResponse();
-    //     apiResponse.setMessage("User deleted successfully");
+     @DeleteMapping("/{id}")
+     public ResponseEntity<ApiResponse> deleteUser(@PathVariable Long id) throws UserException {
+         userService.deleteUser(id);
+         ApiResponse apiResponse = new ApiResponse();
+         apiResponse.setMessage("User deleted successfully");
 
-    //     return ResponseEntity.ok(apiResponse);
-    // }
+         return ResponseEntity.ok(apiResponse);
+     }
 
 }
