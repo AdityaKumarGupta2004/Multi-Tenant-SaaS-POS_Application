@@ -14,15 +14,15 @@ public class PosSystemApplication {
     public static void main(String[] args) {
         SpringApplication.run(PosSystemApplication.class, args);
     }
-    @Bean
-    public ApplicationRunner logDatabaseUrl(DataSource dataSource) {
-        return args -> {
-            try (Connection connection = dataSource.getConnection()) {
-                System.out.println("✅ Connected to DB: " + connection.getMetaData().getURL());
-                System.out.println("✅ DB Name: " + connection.getCatalog());
-                System.out.println("The server is Started in the localhost:5000");
-            }
-        };
-    }
+//    @Bean
+//    public ApplicationRunner logDatabaseUrl(DataSource dataSource) {
+//        return args -> {
+//            try (Connection connection = dataSource.getConnection()) {
+//                System.out.println("✅ Connected to DB: " + connection.getMetaData().getURL());
+//                System.out.println("✅ DB Name: " + connection.getCatalog());
+//                System.out.println("The server is Started in the localhost:5000");
+//            }
+//        };
+//    }
 
 }

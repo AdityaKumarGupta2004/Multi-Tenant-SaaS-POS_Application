@@ -20,13 +20,13 @@ public class AuthController {
     private final AuthService authService;
 
 
-    @PostMapping("/signup")  // http://localhost:6000/auth/signup
+    @PostMapping("/signup")  // http://localhost:5000/auth/signup
     public ResponseEntity<AuthResponse> signupHandler(@RequestBody UserDTO userDTO) throws UserException {
         return ResponseEntity.ok(authService.signup(userDTO));
     }
 
 
-    @PostMapping("/login")  // http://localhost:6000/auth/login
+    @PostMapping("/login")  // http://localhost:5000/auth/login
     public ResponseEntity<AuthResponse> loginHandler(@RequestBody UserDTO userDTO) throws UserException {
         return ResponseEntity.ok(authService.login(userDTO));
     }
