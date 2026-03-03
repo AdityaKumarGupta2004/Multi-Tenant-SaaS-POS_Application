@@ -26,7 +26,7 @@ public class BranchController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<BranchDTO> getBranchBuId(@PathVariable Long id) throws Exception {
+    public ResponseEntity<BranchDTO> getBranchById(@PathVariable Long id) throws Exception {
         BranchDTO createdBranch = branchService.getBranchById(id);
 
         return ResponseEntity.ok(createdBranch);

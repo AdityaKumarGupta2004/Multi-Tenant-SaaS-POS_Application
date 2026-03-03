@@ -1,7 +1,5 @@
 package com.trisys.Pos.System.modal;
-
 import com.trisys.Pos.System.domain.Gender;
-import com.trisys.Pos.System.domain.UserRole;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -17,15 +15,14 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
+@Builder
 @Table(
-        name = "users",
+        name = "customers",
         uniqueConstraints = {
-                @UniqueConstraint(name = "user_email_unique", columnNames = "email"),
-                @UniqueConstraint(name = "profile_image_id_unique", columnNames = "profileImageId")
+                @UniqueConstraint(name = "user_email_unique", columnNames = "email")
         }
 )
-public class User {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,28 +38,18 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-     @ManyToOne
-     private Store store;
+    private String phoneNumber;
 
-     @ManyToOne
-     private Branch branch;
-
-     private String phoneNumber;
-
-     private String address;
-
-     @Enumerated(EnumType.STRING)
-     @Column(nullable = false)
-     private Gender gender;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Gender gender;
 
     @NotNull
     @Past
     @Column(nullable = false)
     private LocalDate dateOfBirth;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 50)
-    private UserRole role;
+    private String address;
 
     @NotNull
     @PastOrPresent
@@ -72,14 +59,8 @@ public class User {
     @PastOrPresent
     private LocalDateTime updatedAt;
 
-    @PastOrPresent
-    private LocalDateTime lastLoginAt;
-
     @Column(unique = true)
     private String profileImageId;
-
-    @Column(nullable = false)
-    private String password;
 
     @PrePersist
     protected void onCreate() {

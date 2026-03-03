@@ -1,5 +1,6 @@
 package com.trisys.Pos.System.payload.dto;
 
+import com.trisys.Pos.System.domain.Gender;
 import com.trisys.Pos.System.domain.UserRole;
 import lombok.Data;
 
@@ -21,7 +22,7 @@ public class UserDTO {
 
     private String address;
 
-//    private Gender gender;
+    private Gender gender;
 
     private LocalDate dateOfBirth;
 

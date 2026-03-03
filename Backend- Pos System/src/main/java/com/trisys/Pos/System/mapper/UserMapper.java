@@ -14,15 +14,15 @@ public class UserMapper {
         userDTO.setEmail(savedUser.getEmail());
         userDTO.setPhoneNumber(savedUser.getPhoneNumber());
         userDTO.setAddress(savedUser.getAddress());
-//        userDTO.setGender(savedUser.getGender());
+        userDTO.setGender(savedUser.getGender());
         userDTO.setDateOfBirth(savedUser.getDateOfBirth());
         userDTO.setRole(savedUser.getRole());
         userDTO.setRegisteredAt(savedUser.getRegisteredAt());
         userDTO.setUpdatedAt(savedUser.getUpdatedAt());
         userDTO.setLastLoginAt(savedUser.getLastLoginAt());
         userDTO.setProfileImageId(savedUser.getProfileImageId());
-//        userDTO.setStoreId(savedUser.getStore() != null ? savedUser.getStore().getId() : null);
-//        userDTO.setBranchId(savedUser.getBranch() != null ? savedUser.getBranch().getId() : null);
+        userDTO.setStoreId(savedUser.getStore() != null ? savedUser.getStore().getId() : null);
+        userDTO.setBranchId(savedUser.getBranch() != null ? savedUser.getBranch().getId() : null);
 
         return userDTO;
     }
@@ -34,7 +34,7 @@ public class UserMapper {
         user.setEmail(userDTO.getEmail());
         user.setPhoneNumber(userDTO.getPhoneNumber());
         user.setAddress(userDTO.getAddress());
-//        user.setGender(userDTO.getGender());
+        user.setGender(userDTO.getGender());
         user.setDateOfBirth(userDTO.getDateOfBirth());
         user.setRole(userDTO.getRole());
         user.setRegisteredAt(userDTO.getRegisteredAt());
