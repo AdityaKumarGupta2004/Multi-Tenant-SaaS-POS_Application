@@ -73,7 +73,7 @@ public class ShiftReportServiceImpl implements ShiftReportService {
                 .findTopByCashierAndShiftEndIsNullOrderByShiftStartDesc(currentUser)
                 .orElseThrow(() -> new Exception("Shift does not found"));
 
-        shiftReport.setShiftEnd(shiftEnd);
+        shiftReport.setShiftEnd(LocalDateTime.now());
 
         List<Refund> refunds = refundRepository.findByCashierIdAndCreatedAtBetween(
                 currentUser.getId(),
