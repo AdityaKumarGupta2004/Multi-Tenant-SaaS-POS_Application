@@ -45,7 +45,7 @@ public class AuthServiceImpl implements AuthService {
         newUser.setEmail(userDTO.getEmail());
         newUser.setPhoneNumber(userDTO.getPhoneNumber());
         newUser.setAddress(userDTO.getAddress());
-        // newUser.setGender(userDTO.getGender());
+         newUser.setGender(userDTO.getGender());
         newUser.setDateOfBirth(userDTO.getDateOfBirth());
         newUser.setRole(userDTO.getRole());
         newUser.setRegisteredAt(LocalDateTime.now());
