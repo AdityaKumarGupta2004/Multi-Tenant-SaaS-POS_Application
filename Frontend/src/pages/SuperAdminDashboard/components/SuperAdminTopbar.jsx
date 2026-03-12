@@ -1,6 +1,7 @@
 import React from "react";
 import { Search, Bell, User, Settings, LogOut } from "lucide-react";
 import { Input } from "../../../components/ui/input";
+import { logout } from "../../../Redux Toolkit/features/user/userThunks";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,11 +11,20 @@ import {
   DropdownMenuTrigger,
 } from "../../../components/ui/dropdown-menu";
 import { Button } from "../../../components/ui/button";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
 
 const SuperAdminTopbar = () => {
-  const user = {
-  };
+  const user = {};
 
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+  
+  const handleLogout = () => {
+    console.log("Logging out...");
+    dispatch(logout());
+    navigate("/auth/login");
+  };
   return (
     <header className="h-20 px-6 md:px-8 lg:px-10 flex-shrink-0 z-20">
       <div className="h-full flex items-center justify-between bg-black/20 backdrop-blur-lg border border-white/10 rounded-2xl px-6">
@@ -29,7 +39,11 @@ const SuperAdminTopbar = () => {
 
         {/* Right side icons and user profile */}
         <div className="flex items-center space-x-6">
-          <Button variant="ghost" size="icon" className="relative text-gray-400 hover:text-white transition-colors">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="relative text-gray-400 hover:text-white transition-colors"
+          >
             <Bell className="w-6 h-6" />
             <span className="absolute top-2 right-2 w-2 h-2 bg-emerald-500 rounded-full"></span>
           </Button>
@@ -41,12 +55,19 @@ const SuperAdminTopbar = () => {
                   <User className="w-5 h-5" />
                 </div>
                 <div className="text-left hidden sm:block">
-                  <div className="font-semibold text-white">{user.name || 'Admin'}</div>
-                  <div className="text-sm text-gray-400">{user.role || 'Super Admin'}</div>
+                  <div className="font-semibold text-white">
+                    {user.name || "Admin"}
+                  </div>
+                  <div className="text-sm text-gray-400">
+                    {user.role || "Super Admin"}
+                  </div>
                 </div>
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56 bg-gray-800/80 border-white/10 text-white backdrop-blur-lg">
+            <DropdownMenuContent
+              align="end"
+              className="w-56 bg-gray-800/80 border-white/10 text-white backdrop-blur-lg"
+            >
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator className="bg-white/10" />
               <DropdownMenuItem>
@@ -59,8 +80,10 @@ const SuperAdminTopbar = () => {
               </DropdownMenuItem>
               <DropdownMenuSeparator className="bg-white/10" />
               <DropdownMenuItem className="text-red-400 focus:text-red-300 focus:bg-red-500/20">
-                <LogOut className="mr-2 h-4 w-4" />
-                <span>Logout</span>
+                <button onClick={handleLogout} className="flex rounded-lg text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-colors">
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Logout</span>
+                </button>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -71,3 +94,13 @@ const SuperAdminTopbar = () => {
 };
 
 export default SuperAdminTopbar;
+
+{
+  /* <button
+            onClick={handleLogout}
+            className="w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-colors"
+          >
+            <LogOut className="w-5 h-5" />
+            <span className="font-medium">Logout</span>
+          </button> */
+}

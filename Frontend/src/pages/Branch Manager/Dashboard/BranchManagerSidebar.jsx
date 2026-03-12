@@ -71,6 +71,7 @@ export default function BranchManagerSidebar() {
   const { branch } = useSelector((state) => state.branch);
 
   const handleLogout = () => {
+    Console.log("Logging out...");
     dispatch(logout());
     navigate("/auth/login");
   };

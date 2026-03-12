@@ -39,6 +39,7 @@ const StoreSidebar = () => {
   const { store } = useSelector((state) => state.store);
 
   const handleLogout = () => {
+    console.log("Logging out...");
     dispatch(logout());
     navigate("/auth/login");
   };

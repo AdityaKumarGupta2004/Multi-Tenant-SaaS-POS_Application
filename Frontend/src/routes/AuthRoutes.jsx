@@ -8,6 +8,15 @@ import Onboarding from '../pages/onboarding/Onboarding';
 const RegisterPage = () => <div className="flex items-center justify-center h-screen text-2xl font-bold">Register Page</div>;
 const ForgotPasswordPage = () => <div className="flex items-center justify-center h-screen text-2xl font-bold">Forgot Password Page</div>;
 
+// useEffect(() => {
+//   const token = localStorage.getItem("token");
+
+//   if (token) {
+//     dispatch(setUser(token));
+//   }
+// }, []);
+
+
 const AuthRoutes = () => {
   return (
     <Routes>

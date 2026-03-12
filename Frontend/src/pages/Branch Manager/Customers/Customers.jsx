@@ -158,7 +158,7 @@ const Customers = () => {
         return "bg-primary/10 text-primary hover:bg-primary/20";
     }
   };
-
+  
   useEffect(() => {
     dispatch(getAllCustomers());
   }, [dispatch]);

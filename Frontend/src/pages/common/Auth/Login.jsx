@@ -15,6 +15,15 @@ import { login, forgotPassword } from '@/Redux Toolkit/features/auth/authThunk';
 import { getUserProfile } from '@/Redux Toolkit/features/user/userThunks';
 import { startShift, getCurrentShiftProgress } from '@/Redux Toolkit/features/shiftReport/shiftReportThunks';
 
+// useEffect(() => {
+//   const token = localStorage.getItem("token");
+
+//   if (token) {
+//     dispatch(setUser(token));
+//   }
+// }, []);
+
+
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showForgotPassword, setShowForgotPassword] = useState(false);
@@ -66,6 +75,7 @@ const Login = () => {
         dispatch(getUserProfile(resultAction.payload.jwt)); 
         
         const userRole = user.role;
+        console.log("User role:", userRole);
         if (userRole === 'ROLE_ADMIN') {
           navigate('/super-admin');
         } else if (userRole === 'ROLE_BRANCH_CASHIER') {

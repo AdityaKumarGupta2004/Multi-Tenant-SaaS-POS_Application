@@ -45,6 +45,7 @@ export default function SuperAdminSidebar() {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
+    console.log("Logging out...");
     dispatch(logout());
     navigate("/auth/login");
   };

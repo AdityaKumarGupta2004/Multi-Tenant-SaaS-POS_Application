@@ -12,6 +12,7 @@ import com.zosh.payload.response.AuthResponse;
 import com.zosh.repository.PasswordResetTokenRepository;
 import com.zosh.repository.UserRepository;
 import com.zosh.service.AuthService;
+import com.zosh.service.impl.CustomUserImplementation;
 
 import com.zosh.service.EmailService;
 import jakarta.transaction.Transactional;

@@ -50,6 +50,7 @@ import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/")
 public class UserController {
 
 
@@ -62,7 +63,7 @@ public class UserController {
 	
 
 	
-	@GetMapping("/api/users/profile")
+	@GetMapping("users/profile")
 	public ResponseEntity<UserDTO> getUserProfileFromJwtHandler(
 			@RequestHeader("Authorization") String jwt) throws UserException {
 		User user = userService.getUserFromJwtToken(jwt);
@@ -71,7 +72,7 @@ public class UserController {
 		return new ResponseEntity<>(userDTO,HttpStatus.OK);
 	}
 
-	@GetMapping("/api/users/customer")
+	@GetMapping("users/customer")
 	public ResponseEntity<Set<UserDTO>> getCustomerList(
 			@RequestHeader("Authorization") String jwt) throws UserException {
 		Set<User> users = userService.getUserByRole(UserRole.ROLE_CUSTOMER);
@@ -80,7 +81,7 @@ public class UserController {
 		return new ResponseEntity<>(userDTO,HttpStatus.OK);
 	}
 
-	@GetMapping("/api/users/cashier")
+	@GetMapping("users/cashier")
 	public ResponseEntity<Set<UserDTO>> getCashierList(
 			@RequestHeader("Authorization") String jwt) throws UserException {
 		Set<User> users = userService.getUserByRole(UserRole.ROLE_BRANCH_CASHIER);

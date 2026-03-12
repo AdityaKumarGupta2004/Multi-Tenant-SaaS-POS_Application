@@ -54,14 +54,16 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <Mail className="h-5 w-5 mr-2 mt-0.5 text-muted-foreground" />
-                <span className="text-muted-foreground">support@pospro.com</span>
+                <a href="mailto:adityakg1307@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                  adityakg1307@gmail.com
+                </a>
               </li>
               <li className="text-muted-foreground">
-                <p>Capital Park, Gachibowli</p>
-                <p>Hyderabad, Telangana 500032</p>
+                <p>HSR Layout</p>
+                <p>Bengaluru, Karnataka - 500032</p>
               </li>
               <li className="text-muted-foreground">
-                <p>+91 98765 43210</p>
+                <p>+91 93424 34234</p>
               </li>
             </ul>
           </div>
@@ -111,7 +113,7 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="md:flex md:items-center md:justify-between">
             <div className="text-sm text-gray-400">
-              <p>&copy; {currentYear} POSPro. All rights reserved.</p>
+              <p>&copy; {currentYear} Trisys - All rights reserved.</p>
             </div>
             <div className="flex space-x-6 mt-4 md:mt-0 text-sm">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
