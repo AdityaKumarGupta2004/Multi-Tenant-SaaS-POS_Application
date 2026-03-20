@@ -225,8 +225,7 @@ Submit issues or forks through the GitHub repository.
 
 ## 📧 Contact
 
-**Ekky Spurgeon**
-📩 Email: **[spurgeonpaul11@outlook.com](mailto:spurgeonpaul11@outlook.com)**
+**Aditya Kumar Gupta**
 
 <hr />
 
