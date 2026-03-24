@@ -5,6 +5,8 @@ import com.zosh.exception.ResourceNotFoundException;
 import com.zosh.modal.Customer;
 import com.zosh.repository.CustomerRepository;
 import com.zosh.service.CustomerService;
+import com.zosh.service.EmailService;
+import jakarta.validation.constraints.Email;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +17,17 @@ import java.util.List;
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
-
+    private final EmailService emailService;
     @Override
     public Customer createCustomer(Customer customer) {
+
+        emailService.sendEmail(
+                customer.getEmail(),
+                "You have been added as an Employee",
+                "Hello " + customer.getFullName() + ",\n\n" +
+                        "You have been successfully added as an employee.\n" +
+                        "Regards,\nAdmin Team"
+        );
         return customerRepository.save(customer);
     }
 
@@ -58,3 +68,5 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
 }
+
+

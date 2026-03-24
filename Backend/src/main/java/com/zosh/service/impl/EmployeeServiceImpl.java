@@ -11,6 +11,7 @@ import com.zosh.payload.dto.UserDTO;
 import com.zosh.repository.BranchRepository;
 import com.zosh.repository.StoreRepository;
 import com.zosh.repository.UserRepository;
+import com.zosh.service.EmailService;
 import com.zosh.service.EmployeeService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -35,6 +36,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final BranchRepository branchRepository;
 
     private final PasswordEncoder passwordEncoder;
+    private final EmailService emailService;
 
     @Override
     @Transactional
@@ -77,7 +79,15 @@ public class EmployeeServiceImpl implements EmployeeService {
             branch.setManager(savedEmployee);
             branchRepository.save(branch); // make sure manager is saved
         }
-
+        emailService.sendEmail(
+                dto.getEmail(),
+                "You have been added as an Employee",
+                "Hello " + dto.getFullName() + ",\n\n" +
+                        "You have been successfully added as an employee.\n" +
+                        "Role: " + dto.getRole() + "\n\n" +
+                        "with Password"+ dto.getPassword()+"\n\n"+
+                        "Regards,\nAdmin Team"
+        );
         return UserMapper.toDTO(savedEmployee);
     }
 
@@ -97,7 +107,15 @@ public class EmployeeServiceImpl implements EmployeeService {
         if(isExist!=null){
             employee.setId(isExist.getId());
         }
-
+        emailService.sendEmail(
+                employee.getEmail(),
+                "You have been added as an Employee",
+                "Hello " + employee.getFullName() + ",\n\n" +
+                        "You have been successfully added as an employee.\n" +
+                        "Role: " + employee.getRole() + "\n\n" +
+                        "with Password  "+ employee.getPassword()+" \n\n"+
+                        "Regards,\nAdmin Team"
+        );
         return userRepository.save(employee);
     }
 

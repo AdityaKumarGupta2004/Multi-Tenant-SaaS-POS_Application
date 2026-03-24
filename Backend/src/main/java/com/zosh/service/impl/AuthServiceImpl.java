@@ -89,6 +89,10 @@ public class AuthServiceImpl implements AuthService {
         response.setMessage("Register success");
         response.setUser(UserMapper.toDTO(savedUser));
         response.setJwt(jwt);
+        String subject = "Account is created";
+        String body = "The Account is created with this Email: " + req.getEmail();
+
+        emailService.sendEmail(req.getEmail(), subject, body);
         return response;
     }
 

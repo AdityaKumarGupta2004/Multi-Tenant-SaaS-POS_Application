@@ -11,9 +11,19 @@ import {
 } from "../../../components/ui/dropdown-menu";
 import { Button } from "../../../components/ui/button";
 import { useSelector } from "react-redux";
-
+import { useDispatch } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { logout } from "../../../Redux Toolkit/features/user/userThunks";
 const StoreTopbar = () => {
   const { userProfile } = useSelector((state) => state.user);
+
+const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    console.log("Logging out...");
+    dispatch(logout());
+    navigate("/auth/login");
+  };
 
   return (
     <header className="h-20 px-6 md:px-8 lg:px-10 flex-shrink-0 z-20">
@@ -58,10 +68,13 @@ const StoreTopbar = () => {
                 <span>Settings</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator className="bg-white/10" />
-              <DropdownMenuItem className="text-red-400 focus:text-red-300 focus:bg-red-500/20">
-                <LogOut className="mr-2 h-4 w-4" />
-                <span>Logout</span>
-              </DropdownMenuItem>
+              <DropdownMenuItem
+  onClick={handleLogout}
+  className="text-red-400 focus:text-red-300 focus:bg-red-500/20"
+>
+  <LogOut className="mr-2 h-4 w-4" />
+  Logout
+</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

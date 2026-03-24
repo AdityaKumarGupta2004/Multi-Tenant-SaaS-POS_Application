@@ -16,6 +16,7 @@ import com.zosh.payload.dto.UserDTO;
 import com.zosh.repository.BranchRepository;
 import com.zosh.repository.StoreRepository;
 import com.zosh.repository.UserRepository;
+import com.zosh.service.EmailService;
 import com.zosh.service.StoreService;
 
 import com.zosh.service.UserService;
@@ -37,6 +38,7 @@ public class StoreServiceImpl implements StoreService {
     private final BranchRepository branchRepository;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final EmailService emailService;
 
 
     @Override
@@ -149,7 +151,16 @@ public class StoreServiceImpl implements StoreService {
 
         employee.setPassword(passwordEncoder.encode(userDto.getPassword()));
         User addedEmployee=userRepository.save(employee);
-
+        // Send email
+        emailService.sendEmail(
+                userDto.getEmail(),
+                "You have been added as an Employee",
+                "Hello " + userDto.getFullName() + ",\n\n" +
+                        "You have been successfully added as an employee.\n" +
+                        "Role: " + userDto.getRole() + "\n\n" +
+                        "with Password"+ userDto.getPassword()+"\n\n"+
+                        "Regards,\nAdmin Team"
+        );
         return UserMapper.toDTO(addedEmployee);
     }
 
