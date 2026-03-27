@@ -154,12 +154,16 @@ public class StoreServiceImpl implements StoreService {
         // Send email
         emailService.sendEmail(
                 userDto.getEmail(),
-                "You have been added as an Employee",
+                "Welcome to the Team – Your Employee Account Details",
                 "Hello " + userDto.getFullName() + ",\n\n" +
-                        "You have been successfully added as an employee.\n" +
-                        "Role: " + userDto.getRole() + "\n\n" +
-                        "with Password"+ userDto.getPassword()+"\n\n"+
-                        "Regards,\nAdmin Team"
+                        "We’re pleased to inform you that you have been successfully added as an employee.\n\n" +
+                        "Your Role: " + userDto.getRole() + "\n" +
+                        "Temporary Password: " + userDto.getPassword() + "\n\n" +
+                        "For security reasons, please log in and change your password as soon as possible.\n\n" +
+                        "If you have any questions, feel free to contact the admin team.\n\n" +
+                        "Welcome aboard!\n\n" +
+                        "Regards,\n" +
+                        "Admin Team"
         );
         return UserMapper.toDTO(addedEmployee);
     }

@@ -81,12 +81,16 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         emailService.sendEmail(
                 dto.getEmail(),
-                "You have been added as an Employee",
+                "Welcome to the Team – Your Employee Account Details",
                 "Hello " + dto.getFullName() + ",\n\n" +
-                        "You have been successfully added as an employee.\n" +
-                        "Role: " + dto.getRole() + "\n\n" +
-                        "with Password"+ dto.getPassword()+"\n\n"+
-                        "Regards,\nAdmin Team"
+                        "We’re pleased to inform you that you have been successfully added as an employee.\n\n" +
+                        "Your Role: " + dto.getRole() + "\n" +
+                        "Temporary Password: " + dto.getPassword() + "\n\n" +
+                        "For security reasons, please log in and change your password as soon as possible.\n\n" +
+                        "If you have any questions, feel free to contact the admin team.\n\n" +
+                        "Welcome aboard!\n\n" +
+                        "Regards,\n" +
+                        "Admin Team"
         );
         return UserMapper.toDTO(savedEmployee);
     }
@@ -109,12 +113,16 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         emailService.sendEmail(
                 employee.getEmail(),
-                "You have been added as an Employee",
+                "Welcome to the Team – Your Employee Account Details",
                 "Hello " + employee.getFullName() + ",\n\n" +
-                        "You have been successfully added as an employee.\n" +
-                        "Role: " + employee.getRole() + "\n\n" +
-                        "with Password  "+ employee.getPassword()+" \n\n"+
-                        "Regards,\nAdmin Team"
+                        "We’re pleased to inform you that you have been successfully added as an employee.\n\n" +
+                        "Your Role: " + employee.getRole() + "\n" +
+                        "Temporary Password: " + employee.getPassword() + "\n\n" +
+                        "For security reasons, please log in and change your password as soon as possible.\n\n" +
+                        "If you have any questions, feel free to contact the admin team.\n\n" +
+                        "Welcome aboard!\n\n" +
+                        "Regards,\n" +
+                        "Admin Team"
         );
         return userRepository.save(employee);
     }
