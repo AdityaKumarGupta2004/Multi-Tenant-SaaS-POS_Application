@@ -8,6 +8,7 @@ public class PosSystemApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PosSystemApplication.class, args);
+		System.out.println("POS System Application started successfully.");
 	}
 
 }

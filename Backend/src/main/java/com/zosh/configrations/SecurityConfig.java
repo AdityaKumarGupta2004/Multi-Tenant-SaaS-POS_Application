@@ -29,13 +29,13 @@ public class SecurityConfig {
 		
 		return http.sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(Authorize -> Authorize
-						.requestMatchers("/api/**").authenticated()
-						.requestMatchers("/api/super-admin/**").hasRole("ADMIN")
-						.anyRequest().permitAll())
-			.addFilterBefore(new JwtValidator(), BasicAuthenticationFilter.class)
-			.csrf(AbstractHttpConfigurer::disable)
-			.cors(cors -> cors.configurationSource(corsConfigurationSource()))
-			.exceptionHandling(
+				.requestMatchers("/api/super-admin/**").hasRole("ADMIN")
+				.requestMatchers("/api/**").authenticated()
+			    .anyRequest().permitAll())
+			    .addFilterBefore(new JwtValidator(), BasicAuthenticationFilter.class)
+		    	.csrf(AbstractHttpConfigurer::disable)
+		    	.cors(cors -> cors.configurationSource(corsConfigurationSource()))
+		     	.exceptionHandling(
 					exceptionHandler -> exceptionHandler
 							.authenticationEntryPoint(customAuthenticationEntryPoint))
 			.build();
