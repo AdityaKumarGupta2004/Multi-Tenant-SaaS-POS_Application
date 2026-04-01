@@ -24,14 +24,15 @@ public class JwtValidator extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
 									FilterChain filterChain) throws ServletException, IOException {
 		String jwt = request.getHeader(JwtConstant.JWT_HEADER);
-		if(jwt!=null){
+		if(jwt!=null && jwt.startsWith("Bearer ")){
 			jwt=jwt.substring(7);
 			try{
 				SecretKey key = Keys.hmacShaKeyFor(JwtConstant.SECRET_KEY.getBytes());
 				Claims claims = Jwts.parser().verifyWith(key).build()
 						.parseSignedClaims(jwt).getPayload();
 
-				String email = String.valueOf(claims.get("email"));
+//				String email = String.valueOf(claims.get("email"));
+				String email = claims.get("email", String.class); // recom mended way to get claim as String
 				String authorities = String.valueOf(claims.get("authorities"));
 
 				List<GrantedAuthority> auths = AuthorityUtils.commaSeparatedStringToAuthorityList(authorities);
@@ -43,5 +44,4 @@ public class JwtValidator extends OncePerRequestFilter {
 		}
 		filterChain.doFilter(request, response);
 	}
-
 }
